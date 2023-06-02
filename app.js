@@ -10,7 +10,7 @@ app.use(cookieParser())
 const cors = require('cors')
 
 const corsOptions = {
-    origin: 'http://localhost:3000',
+    origin: ['http://localhost:3000','https://venugopalportfolio.onrender.com'],
     // origin: "*",
     credentials: true,  
     withCredentials:true,
@@ -23,15 +23,13 @@ app.use(express.json());
 dotenv.config({ path: './config.env' })
 const PORT = process.env.PORT || 5000;
 
-// const methodOverride = require('method-override')
-// app.use(methodOverride('_method'))
 
 // use json coz, post or get method doesn't know that we are passing object in json format
 app.use(require('./route/auth'))
 
-if(process.env.NODE_ENV==="production"){
-    app.use(express.static("frontend/build"));
-}
+// if(process.env.NODE_ENV==="production"){
+//     app.use(express.static("frontend/build"));
+// }
 app.listen(PORT, () => {
     console.log(`server is running at port number ${PORT}`);
 })
