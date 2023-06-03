@@ -144,7 +144,7 @@ router.get('/about', async (req, res) => {
 })
 
 // post contact details.
-router.post('/contact',authenticate, async (req, res) => {
+router.post('/contact', async (req, res) => {
     const { name, email, message } = req.body
     if (!name || !email || !message) {
         return res.status(402).json({ error: "plz fill the field properly" })
@@ -199,7 +199,7 @@ router.get('/sortdate', async (req, res) => {
 
 })
 // lets-talk --get all data
-router.get('/letstalk',authenticate, async (req, res) => {
+router.get('/letstalk', async (req, res) => {
     const resultPerPage = 9;
     const productcount = await Message.countDocuments();
     const apifeature = new features(Message.find(), req.query)
