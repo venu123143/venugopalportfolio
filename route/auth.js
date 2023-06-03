@@ -278,7 +278,7 @@ router.get('/dislike/:id', async (req, res) => {
 
 
 // delete message
-router.delete(`/deletemsg/:id`,authenticate, async (req, res) => {
+router.delete(`/deletemsg/:id`, async (req, res) => {
     const id = req.params.id
     const del = await Message.deleteOne({ _id: id });
     const resultPerPage = 9;
