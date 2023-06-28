@@ -15,6 +15,7 @@ const corsOptions = {
     withCredentials:true,
     optionSuccessStatus: 200,
 }
+
 // to communicate with another ports for security reasons 
 app.use(cors(corsOptions))
 app.use(express.json());
