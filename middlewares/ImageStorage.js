@@ -6,6 +6,8 @@ const Storage= multer.diskStorage({
         cb(null, `${Date.now()}--avatar-${file.originalname}` )
     }
 })
+
+
 const upload = multer({storage:Storage})
 module.exports = upload
 

@@ -24,7 +24,7 @@ const PORT = process.env.PORT || 5000;
 
 
 // use json coz, post or get method doesn't know that we are passing object in json format
-app.use(require('./route/auth'))
+app.use(require('./route/auth')) 
 
 // if(process.env.NODE_ENV==="production"){
 //     app.use(express.static("frontend/build"));

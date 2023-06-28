@@ -76,6 +76,7 @@ router.post('/loginviaotp', async (req, res) => {
     const user = await User.findOne({ phoneno: num })
     if (user) {
         res.status(200).send(user)
+        // return sendToken(loginUser, 200, res);
     }
     else {
         res.status(401).send("user not found")
@@ -166,17 +167,7 @@ router.post('/contact', async (req, res) => {
 
 
 router.get('/skills', async (req, res) => {
-    loginUser = await User.findOne({ username: "VENU123100" })
-    if (loginUser) {
-        const cookie = await loginUser.generateAuthToken();
-        res.cookie("jwtoken", cookie, {
-            maxAge: 180000,
-            httpOnly: true
-        })
-        res.json({ token: "skills page okk..!" })
-    } else {
-        console.log("user not present with username provided");
-    }
+    res.send('skills page is called..!')
 })
 // sortdata
 router.get('/sortdata', async (req, res) => {
@@ -291,7 +282,7 @@ router.delete(`/deletemsg/:id`, async (req, res) => {
 })
 
 // image - upload
-router.post('/upload', authenticate, (req, res) => {
+router.post('/upload', (req, res) => {
     ImageStorage.single("file")(req, res, (err) => {
         if (req.file === undefined) {
             return res.send("must need a image")
@@ -306,7 +297,5 @@ router.post('/upload', authenticate, (req, res) => {
         }
     })
 })
-
-
 
 module.exports = router
