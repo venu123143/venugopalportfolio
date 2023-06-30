@@ -5,7 +5,9 @@ const sendToken = async (user, statuscode, res) => {
         httpOnly: true,
         maxAge: 360000,
     }
-    res.cookie('jwtoken', token, options).json({
+
+    res.status(statuscode).cookie('jwtoken', token, options).json({
+        user:user,
         sucess: true,
         msg: "user logged in successfully",
     })

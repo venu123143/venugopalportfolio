@@ -3,12 +3,13 @@ const router = express.Router();
 const crypto = require('crypto')
 const bcrypt = require('bcrypt');
 const authenticate = require("../middlewares/Authenticate")
-require('../DB/conn') // connection to mongodb
+require('../DB/conn')
 const User = require("../model/User") // get schema
 const Message = require("../model/Message")
 const features = require("../Utils/features")
 const sendToken = require('../Utils/JwtToken')
 const ImageStorage = require('../middlewares/ImageStorage');
+
 // validations
 const { check, validationResult } = require('express-validator');
 router.get('/', (req, res) => {
